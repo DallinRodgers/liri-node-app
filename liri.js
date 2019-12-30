@@ -87,5 +87,34 @@ if (whatToDo === "movie-this") {
         // handle error
         console.log(error);
       });
+  } else {
+    movie = "Mr. Nobody";
+    axios
+      .get(`http://www.omdbapi.com/?apikey=f97cbe0b&t=${movie}`)
+      .then(function(response) {
+        // handle success
+        const movieResults = response.data;
+        const title = movieResults.Title;
+        const year = movieResults.Year;
+        const imdbRating = movieResults.Ratings[0].Value;
+        const rottenTomatoesRating = movieResults.Ratings[1].Value;
+        const country = movieResults.Country;
+        const language = movieResults.Language;
+        const plot = movieResults.Plot;
+        const actors = movieResults.Actors;
+
+        console.log(title);
+        console.log(year);
+        console.log(imdbRating);
+        console.log(rottenTomatoesRating);
+        console.log(country);
+        console.log(language);
+        console.log(plot);
+        console.log(actors);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
   }
 }
