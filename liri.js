@@ -26,10 +26,7 @@ if (whatToDo === "spotify-this-song") {
         const artists = items.artists[0].name;
         const trackLink = items.album.external_urls.spotify;
 
-        console.log(artists);
-        console.log(songName);
-        console.log(trackLink);
-        console.log(album);
+        printSpotify(artists, songName, trackLink, album);
       })
       .catch(function(err) {
         console.log(err);
@@ -45,10 +42,7 @@ if (whatToDo === "spotify-this-song") {
         const artists = track.artists[0].name;
         const trackLink = track.album.external_urls.spotify;
 
-        console.log(artists);
-        console.log(songName);
-        console.log(trackLink);
-        console.log(album);
+        printSpotify(artists, songName, trackLink, album);
       })
       .catch(function(err) {
         console.log(err);
@@ -74,14 +68,16 @@ if (whatToDo === "movie-this") {
         const plot = movieResults.Plot;
         const actors = movieResults.Actors;
 
-        console.log(title);
-        console.log(year);
-        console.log(imdbRating);
-        console.log(rottenTomatoesRating);
-        console.log(country);
-        console.log(language);
-        console.log(plot);
-        console.log(actors);
+        printOMDb(
+          title,
+          year,
+          imdbRating,
+          rottenTomatoesRating,
+          country,
+          language,
+          plot,
+          actors
+        );
       })
       .catch(function(error) {
         // handle error
@@ -103,18 +99,47 @@ if (whatToDo === "movie-this") {
         const plot = movieResults.Plot;
         const actors = movieResults.Actors;
 
-        console.log(title);
-        console.log(year);
-        console.log(imdbRating);
-        console.log(rottenTomatoesRating);
-        console.log(country);
-        console.log(language);
-        console.log(plot);
-        console.log(actors);
+        printOMDb(
+          title,
+          year,
+          imdbRating,
+          rottenTomatoesRating,
+          country,
+          language,
+          plot,
+          actors
+        );
       })
       .catch(function(error) {
         // handle error
         console.log(error);
       });
   }
+}
+
+function printSpotify(artists, songName, trackLink, album) {
+  console.log(`Artista: ${artists}`);
+  console.log(`Song Name: ${songName}`);
+  console.log(`Link to Song: ${trackLink}`);
+  console.log(`Album: ${album}`);
+}
+
+function printOMDb(
+  title,
+  year,
+  imdbRating,
+  rottenTomatoesRating,
+  country,
+  language,
+  plot,
+  actors
+) {
+  console.log(`Title: ${title}`);
+  console.log(`Year: ${year}`);
+  console.log(`IMDb Rating: ${imdbRating}`);
+  console.log(`Rotten Tomatoes Ratting: ${rottenTomatoesRating}`);
+  console.log(`Country: ${country}`);
+  console.log(`Language: ${language}`);
+  console.log(`Plot: ${plot}`);
+  console.log(`Actors: ${actors}`);
 }
